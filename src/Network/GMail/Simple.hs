@@ -24,7 +24,8 @@
 --
 -- >    let mail :: Mail Text
 -- >        mail = Mail
--- >          { mail_recipient = "recipient@example.com"
+-- >          { mail_sender = "Me"
+-- >          , mail_recipient = "recipient@example.com"
 -- >          , mail_subject = "Example mail"
 -- >          , mail_body = "This is an example mail."
 -- >            }

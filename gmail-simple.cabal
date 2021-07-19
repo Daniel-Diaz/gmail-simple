@@ -1,5 +1,5 @@
 name: gmail-simple
-version: 0.1.0.1
+version: 0.1.0.2
 synopsis: Simple library for Google Mail (GMail).
 description:
   Easy-to-use library to interact with the Google Mail API.
