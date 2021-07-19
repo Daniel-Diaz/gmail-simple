@@ -1,6 +1,5 @@
 
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TypeApplications #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE FlexibleInstances #-}
 
@@ -251,7 +250,7 @@ renderMail sender mail = JSON.Object $ HashMap.singleton "raw" $ JSON.String
         [ "From: " <> mail_sender mail <> " <" <> mailAddressText sender <> ">\r\n"
         , "To: " <> mailAddressText (mail_recipient mail) <> "\r\n"
         , "Subject: " <> mail_subject mail <> "\r\n"
-        , "Content-Type: " <> decodeUtf8 (Media.renderHeader $ mailContentType (Proxy @ a)) <> "\r\n"
+        , "Content-Type: " <> decodeUtf8 (Media.renderHeader $ mailContentType (Proxy :: Proxy a)) <> "\r\n"
         , "\r\n"
         , toMailBody $ mail_body mail
           ]
