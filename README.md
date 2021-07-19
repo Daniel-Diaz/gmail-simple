@@ -10,8 +10,5 @@ It doesn't intend to be fully featured, but rather simple.
 * Mail sending.
 * Plain text and HTML supported.
 
-## Planned features
-
-* Additional mail headers.
-
-Feel free to open an issue if you are interested in some specific feature.
+Feel free to open an issue if you are interested in the addition of
+some specific feature.
