@@ -1,15 +1,16 @@
 name: gmail-simple
-version: 0.1.0.0
+version: 0.1.0.1
 synopsis: Simple library for Google Mail (GMail).
 description:
   Easy-to-use library to interact with the Google Mail API.
   .
-  Current only supporting sending mails.
+  Currently only supporting sending mails.
 category: Email, Google
 license: BSD3
 license-file: LICENSE
 bug-reports: https://github.com/Daniel-Diaz/gmail-simple/issues
 homepage: https://github.com/Daniel-Diaz/gmail-simple/blob/main/README.md
+maintainer: Daniel Casanueva
 build-type: Simple
 cabal-version: >= 1.10
 extra-source-files:
