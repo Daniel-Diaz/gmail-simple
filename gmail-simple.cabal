@@ -5,12 +5,13 @@ description:
   Easy-to-use library to interact with the Google Mail API.
   .
   Current only supporting sending mails.
+category: Email, Google
 license: BSD3
-licence-file: LICENSE
+license-file: LICENSE
 bug-reports: https://github.com/Daniel-Diaz/gmail-simple/issues
 homepage: https://github.com/Daniel-Diaz/gmail-simple/blob/main/README.md
 build-type: Simple
-cabal-version: >= 1.2
+cabal-version: >= 1.10
 extra-source-files:
   README.md
 
@@ -19,7 +20,7 @@ library
   hs-source-dirs: src
   ghc-options: -Wall
   build-depends:
-      base
+      base < 5
     , jwt
     , http-conduit
     , text
