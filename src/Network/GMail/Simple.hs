@@ -60,6 +60,7 @@ module Network.GMail.Simple
   , GMailException (..)
     ) where
 
+-- TODO: Better organize the import list
 import Control.Monad (unless)
 import Control.Exception (Exception, throwIO)
 import Control.Concurrent (MVar, newMVar, modifyMVar)
@@ -269,6 +270,8 @@ data GMailException =
 instance Exception GMailException
 
 -- | Send mail using a session. It might throw a 'FailedToSend' exception.
+--
+--   In order for this to work, the user must have permissions for the @https://www.googleapis.com/auth/gmail.send@ scope.
 sendMail :: ToMailBody a => Session -> Mail a -> IO ()
 sendMail session mail = withOAuth session $ \oauth -> do
   let mailReq :: HTTP.Request
