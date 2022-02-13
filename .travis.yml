@@ -1,0 +1,16 @@
+os: linux
+language: generic
+
+jobs:
+  include:
+    - env: RESOLVER=lts-18
+
+before_install:
+  - mkdir bin
+  - curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz --output stack.tar.gz
+  - tar -zxf stack.tar.gz
+  - cp stack-*/stack stack
+
+install:
+- echo "Compiling using $RESOLVER resolver..."
+- stack build --resolver=$RESOLVER
