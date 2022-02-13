@@ -2,6 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE CPP #-}
 
 -- | Interactions with GMail made simple.
 --
@@ -73,6 +74,9 @@ import Data.Text.Encoding (encodeUtf8, decodeUtf8)
 import qualified Web.JWT as JWT
 import qualified Data.HashMap.Strict as HashMap
 import qualified Data.Aeson as JSON
+#if MIN_VERSION_aeson(2,0,0)
+import qualified Data.Aeson.KeyMap as KeyMap
+#endif
 import qualified Network.HTTP.Simple as HTTP
 import Data.ByteString.Base64 (encodeBase64)
 import Network.HTTP.Media (MediaType)
@@ -180,7 +184,11 @@ oauthQuery k sender = do
             , JWT.jti = Nothing
               }
       -- Signed JWT
+#if MIN_VERSION_jwt(0,11,0)
+      jwt = JWT.encodeSigned (JWT.EncodeRSAPrivateKey $ private_key k) h c
+#else
       jwt = JWT.encodeSigned (JWT.RSAPrivateKey $ private_key k) h c
+#endif
       -- HTTP request body
       body :: ByteString
       body = URLEncoded.urlEncodeForm $ URLEncoded.Form $ HashMap.fromList
@@ -244,7 +252,11 @@ withOAuth session f = modifyMVar (session_oauth session) $ \oauthw -> do
              (,) oauthw' <$> f oauth'
 
 renderMail :: forall a . ToMailBody a => MailAddress -> Mail a -> JSON.Value
+#if MIN_VERSION_aeson(2,0,0)
+renderMail sender mail = JSON.Object $ KeyMap.singleton "raw" $ JSON.String
+#else
 renderMail sender mail = JSON.Object $ HashMap.singleton "raw" $ JSON.String
+#endif
     $ Text.replace "+" "-"
     $ Text.replace "/" "_"
     $ encodeBase64
