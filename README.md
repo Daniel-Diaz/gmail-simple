@@ -19,3 +19,8 @@ In order to use the Google API, you need to enable scopes on your account.
 Here are the ones you'll need for this library, depending on what you want to do.
 
 * For sending mails: `https://www.googleapis.com/auth/gmail.send`.
+
+## GHC Compatibility
+
+Stack is used to check for compatibility against different GHC versions and dependencies.
+To see the list of supported snapshots, see [build-script.sh](https://github.com/Daniel-Diaz/gmail-simple/blob/main/build-script.sh).
