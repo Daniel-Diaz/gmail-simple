@@ -1,3 +1,7 @@
+_This repository has been moved to:_
+
+https://gitlab.com/daniel-casanueva/haskell/gmail-simple
+
 # gmail-simple
 
 A library for [Haskell](https://www.haskell.org) that provides functions to easily
